@@ -15,3 +15,19 @@ scrollToTopBtn.onclick = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
+function focusInfo() {
+    console.log("Haciendo foco en Economía...");
+    var InfoDiv = document.getElementById('Info');
+    if (InfoDiv) {
+        InfoDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+
+function focusEstadisticas() {
+    console.log("Haciendo foco en Economía...");
+    var EstadisticasDiv = document.getElementById('estadisticas');
+    if (EstadisticasDiv) {
+        EstadisticasDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+}

@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>DormammuApp</h1>
-
-<!--
+    <h1 class="tittle">DormammuApp</h1>
     <div class="navbar">
-        <button id="btnEstadistica" onclick="()"></button>
-        <button id="btnVictoria" onclick="()"></button>
-        <button id="btnEquipamiento" onclick="()"></button>
-    </div> -->
+        <button id="btnAcercade" onclick="focusInfo()">Acerca de nosotros</button>
+        <button id="btnEstadisticas" onclick="focusEstadisticas()">Estadisticas de los modelos</button>
+        <button id="btnConsulta1" onclick="window.location.href='/regresion_prediction'">Consulta de meses futuros</button>
+    </div> 
 
     <!-- Info Página -->
-    <div class="page-info">
+    <div id="Info" class="page-info">
         <h2>Información de la Página:</h2>
         <p><strong>Objetivo Principal:</strong></p>
         <p>Encontrar patrones de comportamiento basado en las acciones frecuentes de la mayor cantidad de clientes analizables.</p>
@@ -56,7 +54,48 @@
         <p>La posibilidad de recibir ofertas más personalizadas y adaptadas a sus necesidades. Esto les permitirá acceder a productos financieros que se ajusten mejor a su comportamiento y preferencias, mejorando así su experiencia con el banco.</p>
     </div>
 
-
+    <!-- Estadísticas -->
+    <div id="estadisticas" class="estadisticas">
+        <h1>¿Por qué confiar en nuestras predicciones? </h1>
+        <div id="modelStats">
+            <div id="graficos">
+                <h3>Modelo de Regresión: Regresión Lineal</h3>
+                <img src="{{ url_for('static', filename='graficos/regression_plot.png') }}" alt="Grafico de regresion">
+                <p style="text-align: center;">
+                    <h4>Rendimiento Sobresaliente:</h4>
+                    <ul>
+                    <li>RMSE Bajo y Alto R²: El modelo de regresión lineal presenta un RMSE relativamente bajo y un coeficiente de determinación R² de 0.95, indicando que explica el 95% de la variabilidad en la variable objetivo.</li>
+                    <li>Comparación con Otros Modelos: Aunque el modelo Random Forest también mostró un rendimiento similar en términos de R², la regresión lineal tiene la ventaja de la simplicidad y la interpretabilidad.</li>
+                    <li>Cumplimiento de Criterios de Éxito: Supera el criterio cuantitativo establecido al lograr una precisión superior al 70%, asegurando predicciones precisas y útiles para el negocio.</li>
+                    </ul>
+                    <h4>Contribución al Negocio:</h4>
+                    <ul>
+                    <li>Interpretabilidad: Al ser un modelo sencillo, facilita la comprensión de cómo cada variable independiente afecta el resultado, permitiendo insights accionables.</li>
+                    <li>Personalización de Ofertas: Ayuda a identificar patrones en las acciones financieras de los clientes, permitiendo adaptar productos y servicios a sus necesidades específicas.</li>
+                    <li>Mejora Estratégica: Proporciona información valiosa para la toma de decisiones estratégicas, optimizando las estrategias de negocio y reforzando la relación con los clientes.</li>
+                    </ul>
+                </p>
+                <br>
+                <h3>Modelo de Clasificación: Support Vector Machine (SVM)</h3>
+                <img src="{{ url_for('static', filename='graficos/confusion_matrix_svm.png') }}" alt="Histogram PrimaryPistol">
+                <p style="text-align: center;">
+                    <h4>Alto Rendimiento y Eficacia:</h4>
+                    <ul>
+                    <li>Precisión Elevada: Con una precisión del 94%, el modelo SVM supera ampliamente el umbral del 70% establecido en los criterios de éxito.</li>
+                    <li>Balance en Métricas Clave: Presenta un buen equilibrio entre precisión, recall y F1-score, especialmente para la clase 1, que es crítica para el negocio.</li>
+                    <li>Detección Efectiva: Un recall del 92% para la clase 1 indica que el modelo identifica con alta eficacia a los clientes con comportamientos financieros relevantes.</li>
+                    </ul>
+                    <h4>Contribución al Negocio:</h4>
+                    <ul>
+                    <li>Insights Profundos: Ofrece una comprensión detallada de los patrones de comportamiento financiero de los clientes, lo que es esencial para mejorar las estrategias de negocio.</li>
+                    <li>Predicción de Comportamientos: Permite predecir con precisión los movimientos financieros deseados por los clientes, facilitando la personalización y anticipación de sus necesidades.</li>
+                    <li>Mejora de la Experiencia del Cliente: Al ofrecer recomendaciones y productos más ajustados a las preferencias de los clientes, mejora su satisfacción y fidelización.</li>
+                    </ul>
+                </p>
+                <br>
+            </div>
+        </div>
+    </div>
 
     <button id="scrollToTopBtn" title="Volver arriba">&#8679;</button>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
