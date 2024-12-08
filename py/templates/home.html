@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DormammuWebBank</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>DormammuApp</h1>
+
+<!--
+    <div class="navbar">
+        <button id="btnEstadistica" onclick="()"></button>
+        <button id="btnVictoria" onclick="()"></button>
+        <button id="btnEquipamiento" onclick="()"></button>
+    </div> -->
+
+    <!-- Info Página -->
+    <div class="page-info">
+        <h2>Información de la Página:</h2>
+        <p><strong>Objetivo Principal:</strong></p>
+        <p>Encontrar patrones de comportamiento basado en las acciones frecuentes de la mayor cantidad de clientes analizables.</p>
+
+        <h3>Objetivos Secundarios:</h3>
+        <ul>
+            <li>Identificar si existe una relación entre un grupo de clientes y los movimientos financieros que estos realizan.</li>
+            <li>Desarrollar un modelo predictivo que pueda predecir los movimientos financieros deseados por el cliente según sus datos.</li>
+        </ul>
+
+        <h2>Criterios de Éxito</h2>
+        <h3>Cuantitativo:</h3>
+        <ul>
+            <li>Lograr un modelo predictivo con una precisión superior al 70%.</li>
+            <li>Encontrar una correlación significativa (por ejemplo, un coeficiente de correlación superior a 0.5).</li>
+        </ul>
+        
+        <h3>Cualitativo:</h3>
+        <ul>
+            <li>Obtener insights sobre la gestión económica de los clientes y que estos puedan ser utilizados para mejorar las estrategias de negocio del banco.</li>
+            <li>Proveer recomendaciones basadas en datos de los clientes sobre cómo gestionar sus finanzas o potenciar sus movimientos y/o compras.</li>
+        </ul>
+        
+        <h2>Contribución al Negocio</h2>
+        <h3>Para Dormammu:</h3>
+        <p>Conocer mejor a los clientes para adaptar ofertas, mejorar productos y anticipar comportamientos, lo que incrementará la competitividad y reforzará la relación con los usuarios. Como efecto se obtendrá lo siguiente:</p>
+        <ul>
+            <li><strong>Conocimiento del Cliente:</strong> Mejor entendimiento del comportamiento de los usuarios.</li>
+            <li><strong>Optimización de Productos:</strong> Diseño de productos financieros más personalizados.</li>
+            <li><strong>Predicción de Comportamientos:</strong> Anticipación de las necesidades de los clientes.</li>
+            <li><strong>Mejora en la Toma de Decisiones:</strong> Basada en datos y análisis concretos.</li>
+            <li><strong>Aumento de la Competitividad:</strong> Posicionamiento en el mercado.</li>
+        </ul>
+        
+        <h3>Para los Clientes:</h3>
+        <p>La posibilidad de recibir ofertas más personalizadas y adaptadas a sus necesidades. Esto les permitirá acceder a productos financieros que se ajusten mejor a su comportamiento y preferencias, mejorando así su experiencia con el banco.</p>
+    </div>
+
+
+
+    <button id="scrollToTopBtn" title="Volver arriba">&#8679;</button>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

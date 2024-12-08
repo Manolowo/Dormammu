@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background: url('../img/Fondo1.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #f0f0f0;
+}
+
+/* Estilos adicionales para la página */
+.page-info {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    transition: transform 0.3s ease-out;
+}
+
+/* Estilo para cuando la página se desplaza hacia arriba */
+.page-info.scrolled-up {
+    transform: translateY(-10%);
+}
+
+/* Estilo para el botón de volver arriba */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #2c8fff;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+#scrollToTopBtn:hover {
+    opacity: 2;
+}
