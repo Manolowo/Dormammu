@@ -1,47 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DormammuWebBank</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DormammuWebBank - Predicción</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
     <h1 class="tittle">DormammuApp</h1>
     <div class="navbar">
-        <a href="/">Volver a Inicio</a>
-    </div> 
-    
-    <!-- Sección de Predicción Lineal-->
-    <div class="prediction-section">
-        <h2>Realizar una Predicción</h2>
-        <form id="prediction-form" action="{{ url_for('predict1') }}" method="POST">
-            <label for="cuentas">Cuentas:</label>
-            <input type="number" id="cuentas" name="cuentas" required><br>
-
-            <label for="dualidad">Dualidad:</label>
-            <input type="number" id="dualidad" name="dualidad" required><br>
-
-            <label for="col_media">Col Media:</label>
-            <input type="number" id="col_media" name="col_media" step="any" required><br>
-
-            <label for="eeccnac_media">EeccNac Media:</label>
-            <input type="number" id="eeccnac_media" name="eeccnac_media" step="any" required><br>
-
-            <button type="submit">Predecir</button>
-        </form>
-
-        <!-- Resultado de la predicción -->
-        {% if prediction is not none %}
-        <div class="prediction-result">
-            <h3>Resultado de la Predicción</h3>
-            <p>El valor predicho es: <strong>{{ prediction }}</strong></p>
-        </div>
-        {% endif %}
+      <a href="/">Volver a Inicio</a>
     </div>
 
-    <a href="/">Volver a Inicio</a>
+    <!-- Contenedor general que mantiene el formulario a la izquierda y el resultado a la derecha -->
+    <div class="prediction-container">
+      <div class="prediction-form-container">
+        <h2>Realizar una Predicción</h2>
+        <form
+          id="prediction-form"
+          action="{{ url_for('predict1') }}"
+          method="POST"
+        >
+          <label for="cuentas">Cuentas:</label>
+          <input type="number" id="cuentas" name="cuentas" required /><br />
+
+          <label for="dualidad">Dualidad:</label>
+          <input type="number" id="dualidad" name="dualidad" required /><br />
+
+          <label for="col_media">Col Media:</label>
+          <input
+            type="number"
+            id="col_media"
+            name="col_media"
+            step="any"
+            required
+          /><br />
+
+          <label for="eeccnac_media">EeccNac Media:</label>
+          <input
+            type="number"
+            id="eeccnac_media"
+            name="eeccnac_media"
+            step="any"
+            required
+          /><br />
+
+          <button type="submit">Predecir</button>
+        </form>
+      </div>
+
+      {% if prediction is not none %}
+      <div class="prediction-result">
+        <h3>Resultado de la Predicción</h3>
+        <p>El valor predicho es: <strong>{{ prediction }}</strong></p>
+      </div>
+      {% endif %}
+    </div>
+
     <button id="scrollToTopBtn" title="Volver arriba">&#8679;</button>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-</body>
+  </body>
 </html>

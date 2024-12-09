@@ -1,126 +1,252 @@
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    padding: 20px;
-    background: url('../img/Fondo1.png') no-repeat center center fixed;
-    background-size: cover;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
+    color: #333;
+    margin: 0;
 }
 
-/* Estilos adicionales para la página */
-.page-info {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-    transition: transform 0.3s ease-out;
+/* Cabecera Título Principal */
+h1.tittle {
+    text-align: center;
+    font-size: 2rem;
+    color: #2f006d;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
 }
 
-/* Estilo para cuando la página se desplaza hacia arriba */
-.page-info.scrolled-up {
-    transform: translateY(-10%);
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2f006d;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
 }
 
-/* Estilo para el botón de volver arriba */
+.navbar button,
+.navbar a {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.navbar button:hover,
+.navbar a:hover {
+    background-color: #410294;
+    border-color: #410294;
+    color: #ffffff;
+}
+
+/* Contenedores Principales */
+.page-info, 
+.estadisticas, 
+.prediction-section {
+    max-width: 60rem;
+    margin: 4rem auto;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.05);
+}
+
+.page-info h2, 
+.estadisticas h1, 
+.estadisticas h3, 
+.prediction-section h2 {
+    color: #2f006d;
+    margin-bottom: 1rem;
+}
+
+.page-info p, 
+.page-info ul,
+.estadisticas p, 
+.estadisticas ul,
+.prediction-section p,
+.prediction-section ul {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* Listas */
+ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+/* Imágenes dentro de estadisticas y contenedores */
+.estadisticas img,
+.page-info img,
+.prediction-section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
+/* Botón Volver arriba */
 #scrollToTopBtn {
     display: none;
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
     background-color: #2f006d;
     color: #fff;
     border: none;
-    border-radius: 15px;
-    padding: 25px;
-    font-size: 20px;
+    border-radius: 50%;
+    font-size: 1.5rem;
     cursor: pointer;
     z-index: 1000;
     opacity: 0.7;
     transition: opacity 0.3s;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 #scrollToTopBtn:hover {
-    opacity: 2;
+    opacity: 1;
 }
 
-/* Estilo para el contenedor de Estadísticas */
-.estadisticas {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Formularios de Predicción */
+.prediction-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 20rem;
+    margin: 2rem auto;
 }
 
-.estadisticas h2 {
-    margin-bottom: 20px;
-    font-size: 22px;
+.prediction-section label {
+    font-weight: bold;
     color: #333;
 }
 
-#modelStats {
+.prediction-section input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+.prediction-section button[type="submit"] {
+    background: #2f006d;
+    color: #ffffff;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.prediction-section button[type="submit"]:hover {
+    background: #410294;
+}
+
+/* ========================= */
+/* NUEVAS REGLAS AÑADIDAS    */
+/* ========================= */
+
+/* Contenedor para colocar formulario a la izquierda y resultado a la derecha */
+.prediction-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 100%;
+    padding: 0rem 2rem;
+}
+
+/* La .prediction-form-container obtiene los mismos estilos que tenía .prediction-section */
+.prediction-form-container {
+    max-width: 60rem;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.05);
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.prediction-form-container h2 {
+    color: #2f006d;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+/* Formulario dentro de prediction-form-container */
+.prediction-form-container form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1rem;
+    max-width: 20rem;
 }
 
-.navbar {
-    position: fixed;
-    top: 5px;
-    right: 0;
-    z-index: 1000;
+.prediction-form-container label {
+    font-weight: bold;
+    color: #333;
 }
 
-.navbar button {
-    margin-left: 10px;
-    padding: 10px 20px;
-    color: #1d0042;
-    background-color:transparent;
-    border: 3px solid #2f006d;
-    border-radius: 3px;
+.prediction-form-container input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+.prediction-form-container button[type="submit"] {
+    background: #2f006d;
+    color: #ffffff;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background 0.3s;
 }
 
-.navbar button:hover {
-    background-color: #410294;
-    color: #fff;
+.prediction-form-container button[type="submit"]:hover {
+    background: #410294;
 }
 
-.navbar a {
-    margin-left: 10px;
-    text-decoration: none;
-    padding: 10px 20px;
-    color: #1d0042;
-    background-color:transparent;
-    border: 3px solid #2f006d;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+/* Contenedor del resultado de la predicción */
+.prediction-result {
+    flex: 1;
+    margin-left: 2rem;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.05);
 }
 
-.navbar a:hover {
-    background-color: #410294;
-    color: #fff;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.prediction-result h3 {
     color: #2f006d;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-    transition: transform 0.3s ease-out;
-}
-
-h3{
-    text-align: center;
-    color: #000000;
-    font-size:medium ;
+    margin-bottom: 1rem;
 }
