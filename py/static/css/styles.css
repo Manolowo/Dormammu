@@ -171,54 +171,56 @@ ul {
 }
 
 /* ========================= */
-/* NUEVAS REGLAS AÑADIDAS    */
-/* ========================= */
 
-/* Contenedor para colocar formulario a la izquierda y resultado a la derecha */
-.prediction-container {
+.prediction-wrapper {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 100%;
-    padding: 0rem 2rem;
+    padding: 1rem;
+    gap: 1rem;
 }
 
-/* La .prediction-form-container obtiene los mismos estilos que tenía .prediction-section */
-.prediction-form-container {
-    max-width: 60rem;
+/* Contenedor del formulario (50% del ancho) */
+.prediction-container {
+    width: 50%;
     background: #ffffff;
     padding: 2rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 1rem rgba(0,0,0,0.05);
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
 }
 
-.prediction-form-container h2 {
-    color: #2f006d;
-    margin-bottom: 1rem;
+/* Estilos del formulario */
+.prediction-form-container {
     width: 100%;
-}
-
-/* Formulario dentro de prediction-form-container */
-.prediction-form-container form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-width: 20rem;
 }
 
 .prediction-form-container label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-weight: bold;
     color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.prediction-form-container input[type="radio"] {
+    margin: 5px;
 }
 
 .prediction-form-container input {
+    width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 0.25rem;
     font-size: 1rem;
+}
+
+.prediction-form-container input:hover{
+    border: 1px solid #2f006d;
 }
 
 .prediction-form-container button[type="submit"] {
@@ -230,20 +232,19 @@ ul {
     border-radius: 0.25rem;
     cursor: pointer;
     transition: background 0.3s;
+    width: 100%;
 }
 
 .prediction-form-container button[type="submit"]:hover {
     background: #410294;
 }
 
-/* Contenedor del resultado de la predicción */
 .prediction-result {
-    flex: 1;
-    margin-left: 2rem;
+    width: 50%;
     background: #f9f9f9;
-    padding: 1rem;
-    border-radius: 0.25rem;
-    box-shadow: 0 0 0.5rem rgba(0,0,0,0.05);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
 }
 
 .prediction-result h3 {

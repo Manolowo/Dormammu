@@ -15,48 +15,63 @@
       <a href="/">Volver a Inicio</a>
     </div>
 
-    <!-- Contenedor general que mantiene el formulario a la izquierda y el resultado a la derecha -->
-    <div class="prediction-container">
-      <div class="prediction-form-container">
-        <h2>Realizar una Predicción</h2>
-        <form
-          id="prediction-form"
-          action="{{ url_for('predict1') }}"
-          method="POST"
-        >
-          <label for="cuentas">Cuentas:</label>
-          <input type="number" id="cuentas" name="cuentas" required /><br />
-
-          <label for="dualidad">Dualidad:</label>
-          <input type="number" id="dualidad" name="dualidad" required /><br />
-
-          <label for="col_media">Col Media:</label>
-          <input
-            type="number"
-            id="col_media"
-            name="col_media"
-            step="any"
-            required
-          /><br />
-
-          <label for="eeccnac_media">EeccNac Media:</label>
-          <input
-            type="number"
-            id="eeccnac_media"
-            name="eeccnac_media"
-            step="any"
-            required
-          /><br />
-
-          <button type="submit">Predecir</button>
-        </form>
+    <div class="prediction-wrapper">
+      <div class="prediction-container">
+        <div class="prediction-form-container">
+          <h2>Realizar una Predicción</h2>
+          <form id="prediction-form" action="{{ url_for('predict') }}" method="POST">
+            <label for="cuentas">Cuentas:</label>
+            <input type="number" id="cuentas" name="cuentas" min="1" max="5" value="1" required>
+            <label>Dualidad:</label>
+            <label for="dualidad_no">No
+              <input type="radio" id="dualidad_no" name="dualidad" value="0" checked required>
+            </label>
+            <label for="dualidad_si">Sí
+              <input type="radio" id="dualidad_si" name="dualidad" value="1" required>
+            </label>
+            <label for="col_media">Mes:</label>
+            <input type="number" id="col_media" name="col_media" value="1" min="1" max="12" required>
+            <label for="eeccnac_media">Monto de cuenta del cliente:</label>
+            <input type="number" id="eeccnac_media" name="eeccnac_media" min="0" required><br><br>
+            <button type="submit">Predecir</button>
+          </form>
+        </div>
       </div>
 
-      {% if prediction is not none %}
-      <div class="prediction-result">
-        <h3>Resultado de la Predicción</h3>
-        <p>El valor predicho es: <strong>{{ prediction }}</strong></p>
-      </div>
+      {% if prediction1 is not none %}
+        <div class="prediction-result">
+          <h3>Resultado de la Predicción del Modelo de Regresión:</h3>
+          <p>El uso de la tarjeta será aproximadamente: <strong>{{ prediction1|int if prediction1 >= 0 else 0 }}</strong> pesos.</p><br>
+          <li>
+            {% if prediction1 <= 0 %} El cliente no utilizará <strong>nada</strong> del cupo de su tarjeta. 
+            {% elif prediction1 <= 40000 %} El cliente utilizará <strong>moderadamente</strong> del cupo de su tarjeta.
+            {% elif prediction1 <= 75000 %} El cliente utilizará <strong>bastante</strong> del cupo de su tarjeta.
+            {% elif prediction_svm == 1 %} El cliente es de los que <strong>más usan</strong> el cupo de su tarjeta.
+            {% else %} Hola {% endif %}
+          </li>
+          <br>
+          {% if prediction_svm is not none %}
+            <h3>Resultado de la Predicción del Modelo de Clasificación:</h3>
+            <p>El uso de la tarjeta del Cliente <strong>{% if prediction_svm == 1 %} SI {% else %} NO {% endif %} </strong> supera la media</p>
+            <li>
+              {% if prediction_svm == 1 %}  El cliente se encuentra dentro del grupo de clientes que <strong>más</strong> usan el cupo de su tarjeta.<br>
+              <strong>Se recomienda:</strong>
+              <ul>
+                  <li>Ofrecer productos financieros premium o tarjetas de mayor capacidad.</li>
+                  <li>Proporcionar promociones exclusivas para mantener su lealtad y aumentar el uso.</li>
+                  <li>Analizar si este cliente puede beneficiarse de límites de crédito ampliados o servicios personalizados.</li>
+              </ul>
+              {% else %} El cliente se encuentra dentro del grupo de clientes que <strong>menos</strong> usan el cupo de su tarjeta.<br>
+              <strong>Se recomienda:</strong>
+              <ul>
+                  <li>Ofrecer incentivos para incrementar el uso, como descuentos por compras con tarjeta.</li>
+                  <li>Enviar información educativa sobre los beneficios de usar el crédito disponible.</li>
+                  <li>Evaluar si otros productos financieros, como cuentas de ahorro con mayores beneficios, pueden ser más adecuados para sus hábitos.</li>
+              </ul>
+              {% endif %} 
+            </li>
+          {% endif %}
+        </div>
       {% endif %}
     </div>
 
